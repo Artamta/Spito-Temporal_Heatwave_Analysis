@@ -250,22 +250,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## Contact
 
 For questions or issues, please contact:
-- **Name**: Ayush
-- **Email**: ayush@example.com
+- **Name**: Ayush Raj
+- **Email**: artamta47@gmail.com
 ```
 
-### Key Features of the README:
-1. **Comprehensive Instructions**: Detailed steps for running each script.
-2. **Environment Setup**: Clear instructions for setting up the conda environment.
-3. **Input and Output Details**: Explanation of required input files and expected outputs.
-4. **Troubleshooting Section**: Common issues and their solutions.
-5. **Repository Structure**: Overview of the project files and directories.
-
-Let me know if you need further refinements!### Key Features of the README:
-1. **Comprehensive Instructions**: Detailed steps for running each script.
-2. **Environment Setup**: Clear instructions for setting up the conda environment.
-3. **Input and Output Details**: Explanation of required input files and expected outputs.
-4. **Troubleshooting Section**: Common issues and their solutions.
-5. **Repository Structure**: Overview of the project files and directories.
-
-Let me know if you need further refinements!
