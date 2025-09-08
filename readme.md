@@ -1,256 +1,262 @@
-# Final Report: Heatwave Analysis and Clustering
+# 🌡️ Spatio-Temporal Heatwave Analysis & Clustering
 
-This repository contains scripts and tools for analyzing heatwave data, clustering heatwave events, and visualizing the results. The project leverages Python libraries such as `deepgraph`, `matplotlib`, and `pandas` to process and analyze large datasets.
-
----
-
-## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Environment Setup](#environment-setup)
-3. [Repository Structure](#repository-structure)
-4. [How to Run the Scripts](#how-to-run-the-scripts)
-5. [Input Data Requirements](#input-data-requirements)
-6. [Output Files](#output-files)
-7. [Dependencies](#dependencies)
-8. [Troubleshooting](#troubleshooting)
+Welcome to the **Spatio-Temporal Heatwave Analysis** project! This repository contains everything you need to detect, analyze, and visualize extreme heatwave events using state-of-the-art clustering and advanced statistical techniques.
 
 ---
 
-## Project Overview
+## 🚀 Project Highlights
 
-This project analyzes heatwave data to:
-- Detect extreme heatwave events.
-- Cluster heatwaves based on spatio-temporal characteristics.
-- Visualize heatwave clusters and their distributions.
-
-The scripts in this repository are designed to process large datasets, perform clustering using algorithms like K-Means and UPGMA, and generate insightful visualizations.
-
----
-
-## Environment Setup
-
-To ensure reproducibility, the project uses a `conda` environment. Follow these steps to set up the environment:
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/your-repo/final-report.git
-   cd final-report
-
-Here’s a detailed `README.md` file for your project:
-
-```markdown
-# Final Report: Heatwave Analysis and Clustering
-
-This repository contains scripts and tools for analyzing heatwave data, clustering heatwave events, and visualizing the results. The project leverages Python libraries such as `deepgraph`, `matplotlib`, and `pandas` to process and analyze large datasets.
+- **High-Resolution ERA5 Data**: Now using **0.1° x 0.1°** daily reanalysis data for unprecedented spatial detail (previously 0.25° x 0.25°).
+- **Comprehensive Clustering**: Identify **4 major heatwave families** (clusters) and further subfamilies within each, using both K-Means and UPGMA clustering algorithms.
+- **Seasonal Insights**: Analyze heatwaves by meteorological seasons (**DJF, MAM, JJA, SON**) and visualize their unique characteristics.
+- **Advanced Analysis**: Deep dive into cluster characteristics, event durations, magnitudes, spatial extents, and more.
+- **Interactive Visualizations**: Generated publication-ready plots for every step of the analysis.
 
 ---
 
-## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Environment Setup](#environment-setup)
-3. [Repository Structure](#repository-structure)
-4. [How to Run the Scripts](#how-to-run-the-scripts)
-5. [Input Data Requirements](#input-data-requirements)
-6. [Output Files](#output-files)
-7. [Dependencies](#dependencies)
-8. [Troubleshooting](#troubleshooting)
-
----
-
-## Project Overview
-
-This project analyzes heatwave data to:
-- Detect extreme heatwave events.
-- Cluster heatwaves based on spatio-temporal characteristics.
-- Visualize heatwave clusters and their distributions.
-
-The scripts in this repository are designed to process large datasets, perform clustering using algorithms like K-Means and UPGMA, and generate insightful visualizations.
-
----
-
-## Environment Setup
-
-To ensure reproducibility, the project uses a `conda` environment. Follow these steps to set up the environment:
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/your-repo/final-report.git
-   cd final-report
-   ```
-
-2. **Create the Conda Environment**:
-   Use the provided `environment.yml` file to create the environment:
-   ```bash
-   conda env create -f environment.yml
-   ```
-
-3. **Activate the Environment**:
-   ```bash
-   conda activate fr
-   ```
-
-4. **Verify the Installation**:
-   Ensure all dependencies are installed:
-   ```bash
-   conda list
-   ```
-
----
-
-## Repository Structure
+## 📂 Core Directory Structure
 
 ```
-Final_Report/
+Spito-Temporal_Heatwave_Analysis-main/
 ├── code/
-│   ├── clustering_step1.py       # Script for K-Means clustering
-│   ├── clustering_step2.py       # Script for UPGMA clustering
-│   ├── cluster_analysis.py       # Script for analyzing clusters
-│   ├── plotting_results.py       # Script for visualizing results
-│   ├── heatwaves_detection.py    # Script for detecting heatwaves
-│   ├── con_sep.py                # Connectors and selectors for DeepGraph
-│   ├── cppv.py                   # Create CPV datasets
-│   ├── extr.py                   # Utility functions for temperature and percentiles
-│   ├── plotting.py               # Plotting utilities
-├── data/                         # Input datasets (not included in the repo)
-├── results/                      # Output results and visualizations
-├── environment.yml               # Conda environment file
-└── README.md                     # Project documentation
+│   ├── Heatwave_Detection.py         # Detects heatwave events from ERA5 data
+│   ├── clustering_step1.py           # K-Means clustering (families)
+│   ├── clustering_step2.py           # UPGMA clustering (subfamilies)
+│   ├── cluster_analysis.py           # Advanced cluster analysis
+│   ├── plotting_results.py           # Visualization utilities
+│   ├── plotting.py                   # Core plotting functions
+│   ├── con_sep.py, cppv.py, extr.py  # Utilities and connectors
+│   ├── analysis_heatwaves.ipynb      # Jupyter notebook for interactive analysis
+│   └── ... (other scripts & notebooks)
+├── data/
+│   ├── api.py                        # Automated ERA5 data download (CDS API)
+│   └── era5_t2m_dailymax_*.nc        # ERA5 daily max temperature files
+├── results/
+│   ├── clustering_step1/             # Family clustering results & plots
+│   ├── clustering_step2/             # Subfamily clustering results & plots
+│   ├── Advanced_Analysis/            # Comprehensive analysis plots
+│   └── ... (other output folders)
+├── environment.yml                   # Conda environment file
+├── readme.md                         # Project documentation
+└── Data_manipul.ipynb                # Data manipulation notebook
 ```
 
 ---
 
-## How to Run the Scripts
+## 📊 Example Plots & Visualizations
 
-### 1. **Detect Heatwaves**
-   Use the `heatwaves_detection.py` script to detect extreme heatwave events:
-   ```bash
-   python code/heatwaves_detection.py
-   ```
-   - **Input**: NetCDF dataset of temperature data.
-   - **Output**: CSV files containing detected heatwave events.
+### 🔥 Top 9 HWMID Heatwaves (Over 40 Years)
 
-### 2. **K-Means Clustering**
-   Use the `clustering_step1.py` script to perform K-Means clustering:
-   ```bash
-   python code/clustering_step1.py -d data/heatwave_nodes.csv -k 4
-   ```
-   - **Arguments**:
-     - `-d`: Path to the dataset.
-     - `-k`: Number of clusters.
-   - **Output**: Clustered data and visualizations.
+| Plot Name              | Description     | Image                                                 |
+| ---------------------- | --------------- | ----------------------------------------------------- |
+| HWMID Intensity Grid 1 | Top Heatwave #1 | ![](results/top_Heatwaves/HWMID_intensity_grid_1.png) |
+| HWMID Intensity Grid 2 | Top Heatwave #2 | ![](results/top_Heatwaves/HWMID_intensity_grid_2.png) |
+| HWMID Intensity Grid 3 | Top Heatwave #3 | ![](results/top_Heatwaves/HWMID_intensity_grid_3.png) |
+| HWMID Intensity Grid 4 | Top Heatwave #4 | ![](results/top_Heatwaves/HWMID_intensity_grid_4.png) |
+| HWMID Intensity Grid 5 | Top Heatwave #5 | ![](results/top_Heatwaves/HWMID_intensity_grid_5.png) |
+| HWMID Intensity Grid 6 | Top Heatwave #6 | ![](results/top_Heatwaves/HWMID_intensity_grid_6.png) |
+| HWMID Intensity Grid 7 | Top Heatwave #7 | ![](results/top_Heatwaves/HWMID_intensity_grid_7.png) |
+| HWMID Intensity Grid 8 | Top Heatwave #8 | ![](results/top_Heatwaves/HWMID_intensity_grid_8.png) |
+| HWMID Intensity Grid 9 | Top Heatwave #9 | ![](results/top_Heatwaves/HWMID_intensity_grid_9.png) |
 
-### 3. **UPGMA Clustering**
-   Use the `clustering_step2.py` script to perform UPGMA clustering:
-   ```bash
-   python code/clustering_step2.py -d data/heatwave_nodes.csv -u 5 -i 1
-   ```
-   - **Arguments**:
-     - `-d`: Path to the dataset.
-     - `-u`: Number of UPGMA clusters.
-     - `-i`: Family number.
-   - **Output**: Clustered data and visualizations.
+### 💥 Most Intense Heatwaves
 
-### 4. **Cluster Analysis**
-   Use the `cluster_analysis.py` script to analyze clusters:
-   ```bash
-   python code/cluster_analysis.py -d data/heatwave_nodes.csv -k 4
-   ```
-   - **Arguments**:
-     - `-d`: Path to the dataset.
-     - `-k`: Number of clusters.
-   - **Output**: Cluster analysis results and visualizations.
+| Plot Name          | Description           | Image                                             |
+| ------------------ | --------------------- | ------------------------------------------------- |
+| Intense Heatwave 1 | Most intense event #1 | ![](results/top_Heatwaves/HWMID_intensity2_1.png) |
+| Intense Heatwave 2 | Most intense event #2 | ![](results/top_Heatwaves/HWMID_intensity2_2.png) |
+| Intense Heatwave 3 | Most intense event #3 | ![](results/top_Heatwaves/HWMID_intensity2_3.png) |
+| Intense Heatwave 4 | Most intense event #4 | ![](results/top_Heatwaves/HWMID_intensity2_4.png) |
+| Intense Heatwave 5 | Most intense event #5 | ![](results/top_Heatwaves/HWMID_intensity2_5.png) |
+| Intense Heatwave 6 | Most intense event #6 | ![](results/top_Heatwaves/HWMID_intensity2_6.png) |
+| Intense Heatwave 7 | Most intense event #7 | ![](results/top_Heatwaves/HWMID_intensity2_7.png) |
+| Intense Heatwave 8 | Most intense event #8 | ![](results/top_Heatwaves/HWMID_intensity2_8.png) |
+| Intense Heatwave 9 | Most intense event #9 | ![](results/top_Heatwaves/HWMID_intensity2_9.png) |
 
-### 5. **Plot Results**
-   Use the `plotting_results.py` script to visualize heatwave data:
-   ```bash
-   python code/plotting_results.py -d data/heatwave_nodes.csv -cpv data/supernodes.csv -n 5 -b magnitude
-   ```
-   - **Arguments**:
-     - `-d`: Path to the nodes dataset.
-     - `-cpv`: Path to the supernodes table.
-     - `-n`: Number of heatwaves to plot.
-     - `-b`: Column to sort heatwaves by (e.g., `magnitude`).
+## 🧑‍🔬 Analysis Pipeline
+
+### 1. **Data Acquisition & Preparation**
+
+- Download ERA5 daily maximum temperature data using [`data/api.py`](data/api.py) (CDS API).
+- Concatenate and preprocess NetCDF files with `xarray` ([Data_manipul.ipynb](Data_manipul.ipynb)).
+- Switch to **0.1° x 0.1°** grid for higher resolution.
+
+### 2. **Heatwave Detection**
+
+- Run [`Heatwave_Detection.py`](code/Heatwave_Detection.py) to identify extreme events.
+- Output: CSV files with detected heatwave nodes.
+
+### 3. **Clustering Analysis**
+
+#### K-Means Results
+
+| Plot Name                    | Description                 | Image                                                                            |
+| ---------------------------- | --------------------------- | -------------------------------------------------------------------------------- |
+| Day of Year Distribution     | Cluster distribution by day | ![](results/seasonal_clustering_step1/day_of_year_distribution.png)              |
+| Dendrogram DJF Winter        | Family dendrogram (DJF)     | ![](results/seasonal_clustering_step1/dendrogram_DJF_Winter.png)                 |
+| Dendrogram JJA Summer        | Family dendrogram (JJA)     | ![](results/seasonal_clustering_step1/dendrogram_JJA_Summer.png)                 |
+| Dendrogram MAM Spring        | Family dendrogram (MAM)     | ![](results/seasonal_clustering_step1/dendrogram_MAM_Spring.png)                 |
+| Dendrogram SON Fall          | Family dendrogram (SON)     | ![](results/seasonal_clustering_step1/dendrogram_SON_Fall.png)                   |
+| Seasonal Analysis DJF Winter | Cluster map (DJF)           | ![](results/seasonal_clustering_step1/Seasonal_Analysis_Season_0_DJF_Winter.png) |
+| Seasonal Analysis MAM Spring | Cluster map (MAM)           | ![](results/seasonal_clustering_step1/Seasonal_Analysis_Season_1_MAM_Spring.png) |
+| Seasonal Analysis JJA Summer | Cluster map (JJA)           | ![](results/seasonal_clustering_step1/Seasonal_Analysis_Season_2_JJA_Summer.png) |
+| Seasonal Analysis SON Fall   | Cluster map (SON)           | ![](results/seasonal_clustering_step1/Seasonal_Analysis_Season_3_SON_Fall.png)   |
+
+#### UPGMA Subfamily Cluster Plots
+
+| Plot Name               | Description              | Image                                                                       |
+| ----------------------- | ------------------------ | --------------------------------------------------------------------------- |
+| DJF Winter SubCluster 0 | Subfamily cluster DJF #0 | ![](results/seasonal_clustering_step2/DJF_Winter_SubClusters_Cluster_0.png) |
+| DJF Winter SubCluster 1 | Subfamily cluster DJF #1 | ![](results/seasonal_clustering_step2/DJF_Winter_SubClusters_Cluster_1.png) |
+| DJF Winter SubCluster 2 | Subfamily cluster DJF #2 | ![](results/seasonal_clustering_step2/DJF_Winter_SubClusters_Cluster_2.png) |
+| DJF Winter SubCluster 3 | Subfamily cluster DJF #3 | ![](results/seasonal_clustering_step2/DJF_Winter_SubClusters_Cluster_3.png) |
+| JJA Summer SubCluster 0 | Subfamily cluster JJA #0 | ![](results/seasonal_clustering_step2/JJA_Summer_SubClusters_Cluster_0.png) |
+| JJA Summer SubCluster 1 | Subfamily cluster JJA #1 | ![](results/seasonal_clustering_step2/JJA_Summer_SubClusters_Cluster_1.png) |
+| JJA Summer SubCluster 2 | Subfamily cluster JJA #2 | ![](results/seasonal_clustering_step2/JJA_Summer_SubClusters_Cluster_2.png) |
+| JJA Summer SubCluster 3 | Subfamily cluster JJA #3 | ![](results/seasonal_clustering_step2/JJA_Summer_SubClusters_Cluster_3.png) |
+| JJA Summer SubCluster 4 | Subfamily cluster JJA #4 | ![](results/seasonal_clustering_step2/JJA_Summer_SubClusters_Cluster_4.png) |
+| JJA Summer SubCluster 5 | Subfamily cluster JJA #5 | ![](results/seasonal_clustering_step2/JJA_Summer_SubClusters_Cluster_5.png) |
+| MAM Spring SubCluster 0 | Subfamily cluster MAM #0 | ![](results/seasonal_clustering_step2/MAM_Spring_SubClusters_Cluster_0.png) |
+| MAM Spring SubCluster 1 | Subfamily cluster MAM #1 | ![](results/seasonal_clustering_step2/MAM_Spring_SubClusters_Cluster_1.png) |
+| MAM Spring SubCluster 2 | Subfamily cluster MAM #2 | ![](results/seasonal_clustering_step2/MAM_Spring_SubClusters_Cluster_2.png) |
+| MAM Spring SubCluster 3 | Subfamily cluster MAM #3 | ![](results/seasonal_clustering_step2/MAM_Spring_SubClusters_Cluster_3.png) |
+| MAM Spring SubCluster 4 | Subfamily cluster MAM #4 | ![](results/seasonal_clustering_step2/MAM_Spring_SubClusters_Cluster_4.png) |
+| SON Fall SubCluster 0   | Subfamily cluster SON #0 | ![](results/seasonal_clustering_step2/SON_Fall_SubClusters_Cluster_0.png)   |
+| SON Fall SubCluster 1   | Subfamily cluster SON #1 | ![](results/seasonal_clustering_step2/SON_Fall_SubClusters_Cluster_1.png)   |
+| SON Fall SubCluster 2   | Subfamily cluster SON #2 | ![](results/seasonal_clustering_step2/SON_Fall_SubClusters_Cluster_2.png)   |
+| SON Fall SubCluster 3   | Subfamily cluster SON #3 | ![](results/seasonal_clustering_step2/SON_Fall_SubClusters_Cluster_3.png)   |
+
+### 4. **Individual Characteristics**
+
+| Plot Name            | Description                   | Image                                                            |
+| -------------------- | ----------------------------- | ---------------------------------------------------------------- |
+| Duration Categories  | Heatwave duration categories  | ![](results/individual_characteristics/duration_categories.png)  |
+| Magnitude Categories | Heatwave magnitude categories | ![](results/individual_characteristics/magnitude_categories.png) |
+
+### 5. **Frequency & Comprehensive Analysis**
+
+| Plot Name                       | Description                       | Image                                                                |
+| ------------------------------- | --------------------------------- | -------------------------------------------------------------------- |
+| Frequency Statistics            | Heatwave frequency statistics     | ![](results/frequency_analysis/frequency_statistics.png)             |
+| Frequency Comprehensive         | Comprehensive frequency analysis  | ![](results/frequency_analysis/heatwave_frequency_comprehensive.png) |
+| Cross Family/Subfamily Analysis | Cross family/subfamily comparison | ![](results/final_ananananal/cross_family_subfamily_analysis.png)    |
+
+### 6. **Family & Advanced Analysis**
+
+| Plot Name                       | Description                   | Image                                                                     |
+| ------------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
+| Family Comprehensive Comparison | Family comparison             | ![](results/final_ananananal/family_comprehensive_comparison.png)         |
+| Family Duration Distributions   | Family duration distributions | ![](results/final_ananananal/family_duration_distributions.png)           |
+| Family Duration-Magnitude       | Duration vs magnitude         | ![](results/final_ananananal/family_duration_magnitude_relationships.png) |
+| Family Duration Violins         | Duration violin plots         | ![](results/final_ananananal/family_duration_violins.png)                 |
+| Family Radar Comparison         | Radar comparison              | ![](results/final_ananananal/family_radar_comparison.png)                 |
+| Family Seasonal Comparison      | Seasonal comparison           | ![](results/final_ananananal/family_seasonal_comparison.png)              |
+| Family Yearly Comparison        | Yearly comparison             | ![](results/final_ananananal/family_yearly_comparison.png)                |
+| Raw Extreme Analysis            | Raw extreme analysis          | ![](results/final_ananananal/raw_extreme_analysis.png)                    |
+| Raw Temporal Analysis           | Raw temporal analysis         | ![](results/final_ananananal/raw_temporal_analysis.png)                   |
+| Comprehensive Family Analysis   | Advanced family analysis      | ![](results/Advanced_Analysis/comprehensive_family_analysis.png)          |
+
+### 4. **Seasonal Analysis**
+
+- Assigns each event to a meteorological season (DJF, MAM, JJA, SON).
+- Generates seasonal cluster plots and statistics.
+
+### 5. **Advanced Analysis & Visualization**
+
+- [`cluster_analysis.py`](code/cluster_analysis.py): In-depth cluster statistics.
+- [`plotting_results.py`](code/plotting_results.py): Generates all visualizations.
+- [`analysis_heatwaves.ipynb`](code/analysis_heatwaves.ipynb): Interactive exploration.
 
 ---
 
-## Input Data Requirements
+## 🛠️ How to Run
 
-- **Heatwave Nodes Dataset**:
-  - CSV file containing heatwave node data.
-  - Required columns: `cp`, `time`, `latitude`, `longitude`, `magnitude`, etc.
+### 1. **Setup Environment**
 
-- **Supernodes Table**:
-  - CSV file containing supernode data.
-  - Required columns: `cp`, `time_amin`, `time_amax`, `HWMId_magnitude`, etc.
+```bash
+conda env create -f environment.yml
+conda activate fr
+```
+
+### 2. **Download ERA5 Data**
+
+- Configure CDS API in [`data/api.py`](data/api.py).
+- Run the script to download all years.
+
+### 3. **Preprocess Data**
+
+- Use [Data_manipul.ipynb](Data_manipul.ipynb) to concatenate and inspect NetCDF files.
+
+### 4. **Detect Heatwaves**
+
+```bash
+python code/Heatwave_Detection.py
+```
+
+### 5. **Cluster Events**
+
+```bash
+python code/clustering_step1.py -d data/heatwave_nodes.csv -k 4
+python code/clustering_step2.py -d data/heatwave_nodes.csv -u 5 -i 1
+```
+
+### 6. **Analyze & Visualize**
+
+```bash
+python code/cluster_analysis.py -d data/heatwave_nodes.csv -k 4
+python code/plotting_results.py -d data/heatwave_nodes.csv -cpv data/supernodes.csv -n 5 -b magnitude
+```
 
 ---
 
-## Output Files
+## 📑 Input Data Requirements
 
-- **Heatwave Detection**:
-  - CSV files containing detected heatwave events.
-
-- **Clustering Results**:
-  - CSV files with cluster labels.
-  - Visualizations of clusters in circular space and day-of-year distributions.
-
-- **Plots**:
-  - PNG files of heatwave visualizations (e.g., `HWMID_global_1.png`).
+- **ERA5 NetCDF files**: Daily max temperature, 0.1° x 0.1° grid.
+- **Heatwave Nodes CSV**: Columns: `cp`, `time`, `latitude`, `longitude`, `magnitude`, etc.
+- **Supernodes Table**: Columns: `cp`, `time_amin`, `time_amax`, `HWMId_magnitude`, etc.
 
 ---
 
-## Dependencies
+## 📁 Output Files
 
-The project dependencies are listed in the environment.yml file. Key dependencies include:
+- **Detected Events**: CSVs of heatwave nodes.
+- **Clustering Results**: Cluster labels, dendrograms, seasonal distributions.
+- **Plots**: PNGs of all visualizations (see `/results/`).
+
+---
+
+## 🧩 Dependencies
+
 - `deepgraph==0.2.4`
 - `matplotlib==3.5.3`
 - `numpy==1.22.0`
 - `pandas==1.3.5`
 - `basemap==1.3.2`
 - `scikit-learn==1.0.2`
-
-To recreate the environment:
-```bash
-conda env create -f environment.yml
-```
+- `xarray`, `cdsapi`, `glob`, etc.
 
 ---
 
-## Troubleshooting
+## 🆘 Troubleshooting
 
-1. **Missing Dependencies**:
-   If you encounter missing dependencies, ensure the environment is activated:
-   ```bash
-   conda activate fr
-   ```
-
-2. **Basemap Issues**:
-   If `Basemap` fails to install, try:
-   ```bash
-   conda install -c conda-forge basemap
-   ```
-
-3. **File Not Found**:
-   Ensure the input files are placed in the `data/` directory and paths are correctly specified.
-
-4. **Visualization Errors**:
-   If plots are not generated, check if the output directory exists:
-   ```bash
-   mkdir -p /path/to/output/directory
-   ```
+- **Missing Dependencies**:  
+  `conda activate fr`
+- **Basemap Issues**:  
+  `conda install -c conda-forge basemap`
+- **File Not Found**:  
+  Ensure input files are in `/data/` and paths are correct.
+- **Visualization Errors**:  
+  Check output directory exists: `mkdir -p /path/to/output/directory`
 
 ---
 
-## License
+## 📬 Contact
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+For questions or collaboration:
+
+- **Ayush Raj**
+- Email: artamta47@gmail.com
 
 ---
 
-## Contact
-
-For questions or issues, please contact:
-- **Name**: Ayush Raj
-- **Email**: artamta47@gmail.com
-```
-
+> _Feel free to edit, add your plot images, and expand sections as needed!_
