@@ -1,20 +1,52 @@
-# 🌡️ Spatio-Temporal Heatwave Analysis & Clustering
+# 🌡️🔥 Spatio-Temporal Heatwave Analysis & Clustering
 
-Welcome to the **Spatio-Temporal Heatwave Analysis** project! This repository contains everything you need to detect, analyze, and visualize extreme heatwave events using state-of-the-art clustering and advanced statistical techniques.
+<p align="center">
+  <img src="https://img.shields.io/badge/ERA5-0.1%C2%B0%20x%200.1%C2%B0-blue" />
+  <img src="https://img.shields.io/badge/Clustering-KMeans%20%26%20UPGMA-orange" />
+  <img src="https://img.shields.io/badge/SLURM-Enabled-green" />
+</p>
+
+<p align="center">
+  <b>🌍 Cutting-edge analysis of extreme heatwaves across Asia-Pacific using high-resolution ERA5 data, advanced clustering, and interactive visualizations.</b>
+</p>
+
+<p align="center">
+  <b>📄 For a full technical deep-dive, see <a href="Final_Report_Semester_Project.pdf">Final_Report_Semester_Project.pdf</a></b>
+</p>
+
+---
+
+## 🗺️ Data Region & Coverage
+
+**Spatial Bounds:**
+
+- **East:** 135°E
+- **West:** 35°E
+- **North:** 45°N
+- **South:** 15°S
+
+This project focuses on the Asia-Pacific region, leveraging daily ERA5 reanalysis data at **0.1° x 0.1°** resolution for maximum spatial detail.
+
+---
 
 ---
 
 ## 🚀 Project Highlights
 
-- **High-Resolution ERA5 Data**: Now using **0.1° x 0.1°** daily reanalysis data for unprecedented spatial detail (previously 0.25° x 0.25°).
-- **Comprehensive Clustering**: Identify **4 major heatwave families** (clusters) and further subfamilies within each, using both K-Means and UPGMA clustering algorithms.
-- **Seasonal Insights**: Analyze heatwaves by meteorological seasons (**DJF, MAM, JJA, SON**) and visualize their unique characteristics.
-- **Advanced Analysis**: Deep dive into cluster characteristics, event durations, magnitudes, spatial extents, and more.
-- **Interactive Visualizations**: Generated publication-ready plots for every step of the analysis.
+- **High-Resolution ERA5 Data**: Daily max temperature, **0.1° x 0.1°** grid (Asia-Pacific, E=135, W=35, N=45, S=-15)
+- **Automated Data Download**: ERA5 data fetched via CDS API and custom Python scripts
+- **SLURM-Enabled Processing**: Large-scale data handled efficiently with SLURM batch scripts (`data/download_era5_serial.slurm`)
+- **Comprehensive Clustering**: Discover **4 major heatwave families** and subfamilies using K-Means & UPGMA
+- **Seasonal Insights**: Analyze heatwaves by meteorological seasons (**DJF, MAM, JJA, SON**)
+- **Advanced Analysis**: Explore event durations, magnitudes, spatial extents, and more
+- **Interactive Visualizations**: Publication-ready plots for every step
+- **Full Technical Report**: See [`Final_Report_Semester_Project.pdf`](Final_Report_Semester_Project.pdf) for methodology, results, and discussion
 
 ---
 
-## 📂 Core Directory Structure
+---
+
+## � Core Directory Structure
 
 ```
 Spito-Temporal_Heatwave_Analysis-main/
@@ -27,17 +59,19 @@ Spito-Temporal_Heatwave_Analysis-main/
 │   ├── plotting.py                   # Core plotting functions
 │   ├── con_sep.py, cppv.py, extr.py  # Utilities and connectors
 │   ├── analysis_heatwaves.ipynb      # Jupyter notebook for interactive analysis
-│   └── ... (other scripts & notebooks)
+│   └── ...
 ├── data/
 │   ├── api.py                        # Automated ERA5 data download (CDS API)
+│   ├── download_era5_serial.slurm    # SLURM batch script for ERA5 download
 │   └── era5_t2m_dailymax_*.nc        # ERA5 daily max temperature files
 ├── results/
 │   ├── clustering_step1/             # Family clustering results & plots
 │   ├── clustering_step2/             # Subfamily clustering results & plots
 │   ├── Advanced_Analysis/            # Comprehensive analysis plots
-│   └── ... (other output folders)
+│   └── ...
 ├── environment.yml                   # Conda environment file
 ├── readme.md                         # Project documentation
+├── Final_Report_Semester_Project.pdf # Full technical report
 └── Data_manipul.ipynb                # Data manipulation notebook
 ```
 
@@ -250,13 +284,13 @@ python code/plotting_results.py -d data/heatwave_nodes.csv -cpv data/supernodes.
 
 ---
 
-## 📬 Contact
+## 📬 Contact & Collaboration
 
-For questions or collaboration:
+For questions, feedback, or collaboration:
 
-- **Ayush Raj**
-- Email: artamta47@gmail.com
+- **Ayush Raj**  
+  📧 Email: artamta47@gmail.com
 
 ---
 
-> _Feel free to edit, add your plot images, and expand sections as needed!_
+> _Ready to explore? Dive into the code, check out the plots, and see the full technical report for all the details!_
